@@ -1,0 +1,68 @@
+/*	Less Framework 3
+	by Joni Korpi
+	http://lessframework.com	*/
+
+@import lessframework/reset
+@import lessframework/grid
+@import lessframework/text
+
+h1
+  @include huge-font
+
+h2
+  @include large-font
+
+h3
+  @include big-font
+
+::selection
+  background: rgb(255,255,0)
+
+::-moz-selection
+  background: rgb(255,255,0)
+
+img::selection
+  background: transparent
+
+img::-moz-selection
+  background: transparent
+
+
+/*  Default 8-column layout
+  For tablets at 768 px, netbooks, and old browsers. */
+
+body
+  @include grid(8)
+  @include font-stack
+  @include normal-font
+  background: rgb(232,232,232)
+  -webkit-tap-highlight-color: rgb(255,255,0)
+
+
+/*  13-column layout
+  For laptops, desktops, and hdtvs at 1280 px and beyond. */
+
+@media only screen and (min-width: 1212px)
+
+  body
+    @include grid(13)
+
+
+/*	5-column layout
+	For 480 px mobiles, narrow browsers, and landscape iPhones.	*/
+
+@media only screen and (max-width: 767px) and (min-width: 480px)
+
+  body
+    @include grid(5)
+    @include mobile-safari
+
+
+/*	3-column layout
+	For all iPhones, iPod Touches, and other 320 px mobiles.	*/
+
+@media only screen and (max-width: 479px)
+
+  body
+    @include grid(3)
+    @include mobile-safari
