@@ -1,4 +1,5 @@
 stylesheet "styles.sass", :media => "all"
+stylesheet "partials/_base.sass"
 stylesheet "partials/_3.sass"
 stylesheet "partials/_5.sass"
 stylesheet "partials/_8.sass"
