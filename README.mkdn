@@ -13,69 +13,47 @@ Installation
     gem install compass-less-plugin
 
 
-Create a Compass Project using Less Framework
+Create a Compass Project Using Less Framework
 =============================================
 
     compass create -r lessframework my_project --using less
 
-Afterwards, edit the generated `styles.scss` file.
+The above command will generate a `styles.scss` file and a `partials` directory containing
+files pre-populated with media queries for each grid layout:
+
+* `partials/_8` - The default; for tablets at 768 px, netbooks, and old browsers
+* `partials/_3` - For all iPhones, iPod Touches, and other 320 px mobile devices
+* `partials/_5` - For 480 px mobile devices, narrow browsers, and landscape iPhones
+* `partials/_13` - For laptops, desktops, and hdtvs at 1280 px and beyond.
+* `partials/_iphone4` - Overrides for iPhone 4 and other high device-pixel-ratio devices
+
+
+Populating the Grid
+====================
+
+To calculate column widths, use the `column(n, [last])` mixin:
+
+    #content {
+      @include column(5);
+    }
+
+This will create a 396 px column with a 24 px gutter to the right.
+
+To avoid creating the right gutter (e.g. an element is the last column in a row),
+set the `last` parameter to `true`:
+
+    #sidebar {
+      @include column(3, true);
+    }
 
 
 Customizing Typography
 ======================
 
 Less Framework contains typography settings optimized for line heights of `1.5`
-and `1.3`. While this plugin defaults to `1.5`, `1.3` may be used by changing the value
-of the `$less-line-height` variable before importing the `text` module:
+and `1.3`. While this plugin includes the `1.5` line height optimizations by default,
+this can easily be switched by importing `lessframework/text/13` instead of
+`lessframework/text/15` in `styles.scss`.
 
-    $less-line-height: 1.3;
-    @import "lessframework/text";
-
-Values other than `1.5` or `1.3` will be ignored, resulting in the default being used.
-
-
-Creating a Grid
-===============
-
-When `styles.scss` is generated, it will be pre-populated with the inline media queries
-necessary to create a responsive website. If you wish to define grids in a different
-manner, use the `grid(n)` mixin:
-
-    body {
-      @include grid(8);
-    }
-
-The above example creates an 8-column grid with 60 px margins.
-
-The number of columns, `n`, can be:
-
-* `3` - For all iPhones, iPod Touches, and other 320 px mobile devices
-* `5` - For 480 px mobile devices, narrow browsers, and landscape iPhones
-* `8` - For tablets at 768 px, netbooks, and old browsers
-* `13` - For laptops, desktops, and hdtvs at 1280 px and beyond.
-
-To prevent Mobile Safari from bumping up font sizes when in landscape mode, use the 
-`mobile-safari` mixin:
-
-    @media only screen and (max-width: 479px) {
-    
-      body {
-        @include grid(3);
-        @include mobile-safari;
-      }
-    }
-
-
-Populating the Grid
-====================
-
-To calculate the width of columns within the grid, use the `column(n, [last])` mixin:
-
-    #content {
-      @include column(5); /* Creates a 396 px column with a 24 px gutter on the right. */
-    }
-
-    #sidebar {
-      @include column(3, true); /* Creates a 228 px column without the right gutter. */
-    }
-
+**Note to users of versions earlier than 0.7:** Please update the `lessframework/text`
+import to be one of the aforementioned new text modules when upgrading.
