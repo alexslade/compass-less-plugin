@@ -1,0 +1,37 @@
+$less-font-family: Helvetica, Arial, sans-serif;
+
+@mixin gigantic {
+  font-size: 110px;
+  line-height: 120px;
+  letter-spacing: -2px;
+}
+
+@mixin huge {
+  font-size: 68px;
+  line-height: 72px;
+  letter-spacing: -1px;
+}
+
+@mixin large {
+  font-size: 42px;
+  line-height: 48px;
+}
+
+@mixin big {
+  font-size: 26px;
+  line-height: 36px;
+}
+
+@mixin normal {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+@mixin small {
+  font-size: 13px;
+  line-height: 18px;
+}
+
+body {
+  font: 16px/24px $less-font-family;
+}

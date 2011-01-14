@@ -1,0 +1,38 @@
+$less-font-family: Palatino, Constantia, "Palatino Linotype", serif;
+
+@mixin gigantic {
+  font-size: 123px;
+  line-height: 132px;
+  letter-spacing: -2px;
+}
+
+@mixin huge {
+  font-size: 76px;
+  line-height: 84px;
+  letter-spacing: -2px;
+}
+
+@mixin large {
+  font-size: 46px;
+  line-height: 48px;
+  letter-spacing: -1px;
+}
+
+@mixin big {
+  font-size: 29px;
+  line-height: 36px;
+}
+
+@mixin normal {
+  font-size: 18px;
+  line-height: 24px;
+}
+
+@mixin small {
+  font-size: 13px;
+  line-height: 18px;
+}
+
+body {
+  font: 18px/24px $less-font-family;
+}
