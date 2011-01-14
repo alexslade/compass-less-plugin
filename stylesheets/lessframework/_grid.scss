@@ -2,7 +2,7 @@ $less-column-width: 60px !default;
 $less-gutter-width: 24px !default;
 
 @mixin grid($columns) {
-  @include column($columns);
+  @include column($columns, true);
   
   @if $columns == 13 {
     padding: 96px 72px 0;
