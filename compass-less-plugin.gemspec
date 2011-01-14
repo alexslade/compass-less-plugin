@@ -24,6 +24,10 @@ Gem::Specification.new do |s|
     "stylesheets/lessframework/_text.scss",
     "templates/project/manifest.rb",
     "templates/project/styles.sass",
+    "templates/project/partials/_3.sass",
+    "templates/project/partials/_5.sass",
+    "templates/project/partials/_8.sass",
+    "templates/project/partials/_13.sass",
   ]
 
   s.has_rdoc = false

@@ -1,4 +1,8 @@
 stylesheet "styles.sass", :media => "all"
+stylesheet "partials/_3.sass"
+stylesheet "partials/_5.sass"
+stylesheet "partials/_8.sass"
+stylesheet "partials/_13.sass"
 
 description "Less Framework"
 
