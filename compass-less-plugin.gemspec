@@ -15,16 +15,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "compass", ">= 0.10"
 
-  s.files = [
-    "compass-less-plugin.gemspec",
-    "README.mkdn",
-    "lib/lessframework.rb",
-    "stylesheets/lessframework/_grid.scss",
-    "stylesheets/lessframework/_reset.scss",
-    "stylesheets/lessframework/_text.scss",
-    "templates/project/manifest.rb",
-    "templates/project/styles.sass",
-  ]
+  s.files = `git ls-files`.split("\n")
 
   s.has_rdoc = false
   s.require_paths = ["lib"]
