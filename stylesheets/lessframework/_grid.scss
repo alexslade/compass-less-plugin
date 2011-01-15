@@ -1,3 +1,6 @@
+$less-column-width: 60px !default
+$less-gutter-width: 24px !default
+
 @mixin grid($columns) {
   @include column($columns, true);
   
