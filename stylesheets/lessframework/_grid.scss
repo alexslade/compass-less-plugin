@@ -6,6 +6,8 @@ $less-gutter-width: 24px !default;
   
   @if $columns == 13 {
     padding: 96px 72px 0;
+  } @else if $columns == 11 {
+    padding: 66px 42px 0;
   } @else if $columns == 8 {
     padding: 84px 60px 0;
   } @else if $columns == 5 {
