@@ -6,9 +6,9 @@ Gem::Specification.new do |s|
   s.version     = "0.8"
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["William Wells"]
-  s.email       = ["projects@hanwells.me"]
+  s.email       = ["less@hapa.me"]
   s.homepage    = "http://github.com/willhw/compass-less-plugin"
-  s.summary     = %q{Compass compatible port of Less Framework 3}
+  s.summary     = %q{Compass compatible port of Less Framework}
   s.description = %q{Less Framework is a cross-device CSS grid system based on using inline media queries.}
 
   s.rubyforge_project = "compass-less-plugin"
