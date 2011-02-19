@@ -1,10 +1,20 @@
 Less Framework Compass Plugin
 =============================
 
-This plugin adds Less Framework 3 to [Compass](http://compass-style.org/).
+This plugin adds Less Framework 4 to [Compass](http://compass-style.org/).
 
-Less Framework 3 was written by Joni Korpi. For more information, visit the official site at
-[http:/lessframework.com/](http://lessframework.com/)
+Less Framework was written by Joni Korpi. For more information, visit the
+official site at [http:/lessframework.com/](http://lessframework.com/)
+
+
+Less Framework 4
+================
+
+Less Framework 4 was a significant upgrade to the version that came before it.
+As a result, this plugin is now **backwards incompatible** with earlier
+versions.
+
+If you need to use Less Framework 3, use version 0.8 of this plugin.
 
 
 Installation
@@ -16,23 +26,45 @@ Installation
 Getting Started
 ===============
 
-To create a Compass project using Less Framework 3, enter:
+To create a Compass project using Less Framework, enter:
 
-    compass create -r lessframework my_project --using less
+    compass create -r less my_project --using less
 
-The above command will generate a `styles.scss` file and a `partials` directory containing
-files pre-populated with media queries for each grid layout:
+The above command will generate a directory named `my_project` populated with
+the Compass project files. If you look in the project `src` directory, you will
+find a `less.scss` file and a `partials` directory.
 
-* `partials/_8` - The default; for tablets at 768 px, netbooks, and old browsers
-* `partials/_3` - For all iPhones, iPod Touches, and other 320 px mobile devices
-* `partials/_5` - For 480 px mobile devices, narrow browsers, and landscape iPhones
-* `partials/_11` - 984 px layout for those wanting something close to 960 px
-* `partials/_13` - For laptops, desktops, and hdtvs at 1280 px and beyond.
-* `partials/_iphone4` - Overrides for iPhone 4 and other high device-pixel-ratio devices
+`less.scss` is the plugin bootstrap file, and imports all necessary support
+files to use the framework. This file can also be used to configure some of the
+plugin settings (see the `Framework Configuration Variables` section for more
+details).
+
+The `partials` directory contains files pre-populated with media queries for
+the grid layouts defined by the Less Framework:
+
+* `default` - 10 columns at 992px; for desktops, laptops, tablets in landscape
+   orientation, and all old browsers
+* `tablet` - 8 columns at 768px; for iPads and other tablets
+* `mobile` - 3 columns at 320px; for iPhones, iPod Touches, and most other
+   modern mobile devices
+* `wide-mobile` - 5 columns at 480px; for large mobile devices, as well as
+   iPhones and iPod Touches in landscape orientation
+* `high-px-ratio` - Overrides styles for devices with a device-pixel-ratio of
+   2+, such as the iPhone 4
+
+A `partials/global` file is also provided to define global styles shared by all
+layouts.
 
 
-Populating the Grid
-====================
+Global Reset
+============
+
+The global reset included with the Less Framework can be used by importing the
+`less/reset` file.
+
+
+The Grid
+========
 
 To calculate column widths, use the `column(n, [last])` mixin:
 
@@ -40,10 +72,10 @@ To calculate column widths, use the `column(n, [last])` mixin:
       @include column(5);
     }
 
-This will create a 396 px column with a 24 px gutter to the right.
+This will give an element a width of 436px with a 24px gutter to the right.
 
-To avoid creating the right gutter (e.g. an element is the last column in a row),
-set the `last` parameter to `true`:
+To avoid creating the right gutter (e.g. an element is the last column in a
+row), set the `$last` parameter to `true`:
 
     #sidebar {
       @include column(3, true);
@@ -53,26 +85,50 @@ set the `last` parameter to `true`:
 Typography
 ==========
 
-Less Framework contains typography settings optimized for line heights of `1.5`
-and `1.3`. While this plugin includes the `1.5` line height optimizations by default,
-this can easily be switched by importing `lessframework/text/13` instead of
-`lessframework/text/15` in `styles.scss`.
+Less Framework 4 contains three typographic presets:
 
-**Note to users of versions prior to 0.7:** Please update the `lessframework/text`
-import to be one of the aforementioned text modules when upgrading.
+* `typography/16px` - Optimized for 1.5 line-height; good for fonts like
+   Georgia
+* `typography/17px` - Optimized for 1.4 line-height; good for fonts like
+   Palatino
+* `typography/18px` - Optimized for 1.33 line-height; good for fonts like Times
 
-
-Typography Mixins
-=================
-
-The following typography mixins are available:
+If one of the above presets are imported, the following CSS classes also become
+available to help customize your text:
 
 * `gigantic`
 * `huge`
 * `large`
+* `bigger`
 * `big`
-* `normal`
 * `small`
 
-In addition, the `$less-font-family` variable contains the font stack assigned to
-the imported typography module.
+
+Framework Configuration Variables
+=================================
+
+The following variables are available to configure the plugin:
+
+* `$less-grid-element` - The element to mix the grid definition into; defaults
+   to `body`
+* `$less-grid-padding` - Globally determines if the grid mixin should also
+   include the default padding; defaults to `true`
+
+Be sure to configure these variables before any `@import` calls are made,
+otherwise the results may be inconsistent. Also, wrap any string variable
+values with the `unquote` function, e.g.
+
+    $less-grid-element: unquote("#container");
+
+
+Mixins
+======
+
+* `grid($columns)` - Sets up a grid with given number of columns
+* `grid-padding($columns)` - Imports the default padding for a grid with the
+   given number of columns; can be used to specify which layouts will use the
+   default grid padding as defined by the Less Framework
+* `column($columns, $last)` - Sets the width of an element to span the number
+   of given columns with a margin to the right; to disable the margin, set
+   `$last` to `false`
+* `selection-color($color)` - Sets the background color used for text selection
