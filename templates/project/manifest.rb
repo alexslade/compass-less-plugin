@@ -1,4 +1,4 @@
-discover :stylesheet
+discover :stylesheets
 
 html "example.html"
 
