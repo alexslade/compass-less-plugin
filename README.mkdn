@@ -1,5 +1,5 @@
-Less Framework Compass Plugin
-=============================
+Less Framework Compass Plugin - Modified by Alex for his projects
+=================================================================
 
 This plugin adds Less Framework 4 to [Compass](http://compass-style.org/).
 
@@ -129,8 +129,8 @@ Mixins
    given number of columns; can be used to specify which layouts will use the
    default grid padding as defined by the Less Framework
 * `column($columns, $last)` - Sets the width of an element to span the number
-   of given columns with a margin to the right; to disable the margin, set
-   `$last` to `false`
+   of given columns with a margin to the right; for a margin of 0px, set
+   `$last` to `true`
 * `selection-color($color)` - Sets the background color used for text selection
 
 

@@ -1,0 +1,27 @@
+@import less/reset
+@import less/framework
+@import less/typography/17px
+
+@import partials/base
+
+
+
+/* Default Layout: 992px. ----------------------------------------------------------------
+   Gutters: 24px.
+   Outer margins: 48px.
+   Leftover space for scrollbars @1024px: 32px.  */
+
+body
+  @include grid(10)
+
+
+
+
+/* Mobile Layout: 320px. ----------------------------------------------------------------
+   Gutters: 24px.
+   Outer margins: 34px.
+   Inherits styles from: Default Layout.  */
+
+@media only screen and (max-width: 767px)
+  body
+    @include grid(3)
